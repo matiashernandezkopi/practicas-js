@@ -5,20 +5,23 @@ const modified = 'stephor'
 
 function findNaughtyStep(original, modified) {
     let respuesta = ''
-    if (original.split('').length>modified.split('').length) {
-        respuesta = original
-        .split('')
-        .find(ele=> !modified.split('').includes(ele))
-    } else {
-        respuesta = modified
-        .split('')
-        .find(ele=> !original.split('').includes(ele))
+    
+    
+    if(original.split('').length<modified.split('').length){
+      respuesta = modified
+      .split('')
+      .find(ele=> !original.split('').includes(ele))
+    }else{
+      respuesta = original
+      .split('')
+      .find(ele=> !modified.split('').includes(ele))
     }
 
-    if (respuesta===undefined) {
-        respuesta= ''
+    if(respuesta===undefined){
+      respuesta = modified.split('').find((e, i) => e !== original.split('')[i])
     }
-    return respuesta
+
+    return respuesta || ''
 }
 
 
